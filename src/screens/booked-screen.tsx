@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-/** @description Booked Screen */
+/** @description Экран забронированных мероприятий */
 const BookedScreen = (): JSX.Element => {
   return (
     <View>
