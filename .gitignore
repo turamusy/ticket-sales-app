@@ -30,6 +30,11 @@ build/
 .gradle
 local.properties
 *.iml
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
 # OSX
 .DS_Store
 # BUCK
