@@ -1,9 +1,9 @@
 import { IEventProps } from '@app/interfaces/dashboard-event';
-import { IImageProps } from '@app/interfaces/dashboard-image';
 import React, { useState, useEffect } from 'react';
 import { View, FlatList } from 'react-native';
-import { Card, Text, ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
 import { styles } from '@app/screens/dashboard/dashboard.styles';
+import { EventCard } from '@app/components/event-card/event-card';
 
 /** @description Демо-данные мероприятий */
 const EVENTS: IEventProps[] = [
@@ -53,54 +53,6 @@ const EVENTS: IEventProps[] = [
     minPrice: 6000
   },
 ];
-
-
-/** @description Ленивая загрузка изображения (использует Card.Cover для отображения превью изображения) */
-const LazyImage: React.FC<IImageProps> = ({ source }) => {
-  const [loaded, setLoaded] = useState(false);
-
-  return (
-    <View style={styles.lazyImageContainer}>
-      {!loaded && (
-        <Card style={styles.activityIndicator}>
-          <ActivityIndicator size="small" />
-        </Card>
-      )}
-      <Card.Cover
-        source={{ uri: source }}
-        onLoad={() => setLoaded(true)}
-        style={[styles.cardCover, { height: loaded ? 150 : 0, opacity: loaded ? 1 : 0 }]}
-      />
-    </View>
-  );
-};
-
-
-/** @description Компонент для карточки мероприятия (включает ленивую загрузку изображения) */
-const EventCard: React.FC<{
-  event: IEventProps;
-}> = ({ event }) => (
-  <Card style={styles.card} onPress={() => {}}>
-    <LazyImage source={event.image} />
-    <Card.Content>
-      <View style={styles.rowContainer}>
-        <Text variant="titleLarge" style={styles.titleText}>
-          {event.title}
-        </Text>
-        <Text variant="bodySmall" style={styles.secondaryText}>
-          {event.genre}
-        </Text>
-      </View>
-      <Text variant="bodySmall" style={styles.secondaryText}>
-        {event.date}
-      </Text>
-      <Text variant="bodyMedium" style={styles.priceText}>
-        From {event.minPrice}
-      </Text>
-    </Card.Content>
-  </Card>
-);
-
 
 /** @description Компонент для отображения списка мероприятий (использует FlatList для ленивой загрузки) */
 const EventList: React.FC = () => {
