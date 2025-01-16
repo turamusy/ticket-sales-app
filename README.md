@@ -106,6 +106,8 @@ ticket-sales-app/
 
 ## Скриншоты
 
+<img width="360" alt="log" src="https://github.com/user-attachments/assets/47af32c9-f2bd-45a8-ab41-d868093b5b2c" />
+<img width="366" alt="dashboard" src="https://github.com/user-attachments/assets/808484c6-7c10-431e-b5c4-b25214a3de8a" />
 
 ## License
 
